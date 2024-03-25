@@ -1,9 +1,11 @@
 package org.university.diplom.service.impl;
 
+import lombok.RequiredArgsConstructor;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 import org.springframework.stereotype.Service;
 import org.university.diplom.constants.FunctionType;
+import org.university.diplom.dto.CommonDto;
 import org.university.diplom.service.CalculationService;
 
 import static java.lang.Math.sin;
@@ -17,17 +19,28 @@ import static java.lang.Math.sin;
 
 
 @Service
-public class CalculationServiceImpl implements CalculationService {
+@RequiredArgsConstructor
+public class MechanicalWaveCalculationService implements CalculationService {
+
+    private final ImageService imageService;
+
     @Override
-    public XYSeriesCollection calculate(FunctionType functionType, double amplitude, double waveLength, double step) {
+    public void calculate(CommonDto commonDto) {
         double y;
         final XYSeries waveLine = new XYSeries("MechanicalWave");
-        for (double x = 0; x < 100; x += step){
-            y = amplitude * sin(((2 * Math.PI) / waveLength) * x);
+        for (double x = 0; x < 100; x += commonDto.getStep()){
+            y = commonDto.getAmplitude() * sin(((2 * Math.PI) / commonDto.getWaveLength()) * x);
             waveLine.add(x, y);
         }
         XYSeriesCollection dataset = new XYSeriesCollection();
         dataset.addSeries(waveLine);
-        return dataset;
+        imageService.generateImage(dataset);
     }
+
+    @Override
+    public FunctionType getType() {
+        return FunctionType.MECHANICAL;
+    }
+
+
 }
