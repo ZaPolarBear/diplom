@@ -13,8 +13,8 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "mechanical_wave")
-public class MechanicalWave {
+@Table(name = "function_entity")
+public class FunctionEntity {
     @Id
     @GeneratedValue
     private UUID id;
@@ -23,13 +23,7 @@ public class MechanicalWave {
     private FunctionType functionType;
 
     @Column(nullable = false)
-    private double amplitude;
-
-    @Column(nullable = false)
-    private double wavelength;
-
-    @Column(nullable = false)
-    private double step;
+    private String function;
 
     @Column(nullable = false)
     private UUID imageName;
@@ -38,8 +32,8 @@ public class MechanicalWave {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        MechanicalWave mechanicalWave = (MechanicalWave) o;
-        return Objects.equals(id, mechanicalWave.id);
+        FunctionEntity functionEntity = (FunctionEntity) o;
+        return Objects.equals(id, functionEntity.id);
     }
 
     @Override

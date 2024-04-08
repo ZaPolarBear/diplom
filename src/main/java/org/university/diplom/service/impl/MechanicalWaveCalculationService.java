@@ -22,10 +22,8 @@ import static java.lang.Math.sin;
 @RequiredArgsConstructor
 public class MechanicalWaveCalculationService implements CalculationService {
 
-    private final ImageService imageService;
-
     @Override
-    public void calculate(CommonDto commonDto) {
+    public XYSeriesCollection calculate(CommonDto commonDto) {
         double y;
         final XYSeries waveLine = new XYSeries("MechanicalWave");
         for (double x = 0; x < 100; x += commonDto.getStep()){
@@ -34,7 +32,7 @@ public class MechanicalWaveCalculationService implements CalculationService {
         }
         XYSeriesCollection dataset = new XYSeriesCollection();
         dataset.addSeries(waveLine);
-        imageService.generateImage(dataset);
+        return dataset;
     }
 
     @Override
@@ -42,5 +40,9 @@ public class MechanicalWaveCalculationService implements CalculationService {
         return FunctionType.MECHANICAL;
     }
 
+    @Override
+    public String toFunction(CommonDto commonDto){
+        return new String();
+    }
 
 }

@@ -20,11 +20,9 @@ public class StrategyConfiguration {
 
     @Bean
     public Map<FunctionType, CalculationService> store() {
-
         return  calculationServices
                 .stream()
                 .collect(Collectors.toMap(CalculationService::getType, Function.identity()));
-
     }
 
 }

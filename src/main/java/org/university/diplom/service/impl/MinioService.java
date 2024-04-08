@@ -8,7 +8,6 @@ import lombok.RequiredArgsConstructor;
 import org.apache.commons.compress.utils.IOUtils;
 import org.springframework.stereotype.Service;
 import org.university.diplom.exception.ImageUploadException;
-import org.university.diplom.repository.EntityRepository;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -23,16 +22,14 @@ public class MinioService {
 
     private final MinioClient minioClient;
 
-    private final EntityRepository entityRepository;
+    private static final String BUCKET_NAME = "images";
 
-
-
-    public String upload(byte[] file, String bucketName){
+    public String upload(byte[] file){
         InputStream imageStream = new ByteArrayInputStream(file);
         String imageName = UUID.randomUUID().toString();
         try {
             minioClient.putObject(PutObjectArgs.builder()
-                    .bucket(bucketName)
+                    .bucket(BUCKET_NAME)
                     .object(imageName)
                     .stream(imageStream, imageStream.available(), -1)
                     .build());
@@ -43,11 +40,10 @@ public class MinioService {
         }
     }
 
-
-    public byte[] findImage(String imageName, String bucketName) {
+    public byte[] findImage(String imageName) {
         try (InputStream object =
                      minioClient.getObject(
-                             GetObjectArgs.builder().bucket(bucketName).object(imageName).build())) {
+                             GetObjectArgs.builder().bucket(BUCKET_NAME).object(imageName).build())) {
             return IOUtils.toByteArray(object);
 
         } catch (MinioException | IllegalArgumentException | IOException | InvalidKeyException |

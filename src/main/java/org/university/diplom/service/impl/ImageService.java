@@ -22,7 +22,7 @@ public class ImageService {
     @Value("${spring.minio.bucket.image}")
     private String bucketName;
 
-    public void generateImage(XYSeriesCollection dataset) {
+    public byte[] generateImage(XYSeriesCollection dataset) {
         JFreeChart chart = ChartFactory.createXYLineChart(
                 "Mechanical Wave",
                 "X Axis",
@@ -34,7 +34,7 @@ public class ImageService {
                 false
         );
         BufferedImage bufferedImage = chart.createBufferedImage(500, 500);
-        minioService.upload(convertToByteArray(bufferedImage), bucketName);
+        return convertToByteArray(bufferedImage);
     }
 
     private static byte[] convertToByteArray(BufferedImage image) {
