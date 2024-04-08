@@ -1,19 +1,28 @@
 services:
+  app:
+      build: .
+      ports:
+        - 8080:8080
+      depends_on:
+        - postgres
+        - minio
   postgres:
-    image: 'postgres:latest'
-    environment:
-      - 'POSTGRES_DB=mydatabase'
-      - 'POSTGRES_PASSWORD=secret'
-      - 'POSTGRES_USER=myuser'
+    image: postgres:latest
+    container_name: postgres
     ports:
-      - '5432'
+      - "54320:5432"
+    env_file:
+      - ./.env.postgres
+    environment:
+      - POSTGRES_USER=${DB_USERNAME:-postgres}
+      - POSTGRES_PASSWORD=${DB_PASSWORD:-postgres}
+      - POSTGRES_DB=${DB_WAVE:-wave_db}
   minio:
     image: 'bitnami/minio:latest'
     container_name: minio
     hostname: minio
     ports:
       - "9000:9000"
-      - "9001:9001"
     env_file:
       - ./.env.minio
     environment:
