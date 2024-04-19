@@ -42,7 +42,7 @@ public class MechanicalWaveCalculationService implements CalculationService {
 
     @Override
     public String toFunction(CommonDto commonDto){
-        return new String();
+        return commonDto.getAmplitude() + " " + "* sin(" + (2 * Math.PI) + " / " +  commonDto.getWaveLength() + ")";
     }
 
 }

@@ -6,6 +6,7 @@ import io.minio.PutObjectArgs;
 import io.minio.errors.MinioException;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.compress.utils.IOUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.university.diplom.exception.ImageUploadException;
 
@@ -22,28 +23,29 @@ public class MinioService {
 
     private final MinioClient minioClient;
 
-    private static final String BUCKET_NAME = "images";
+    @Value("${spring.minio.bucket.image}")
+    private String bucketName;
 
     public String upload(byte[] file){
         InputStream imageStream = new ByteArrayInputStream(file);
         String imageName = UUID.randomUUID().toString();
         try {
             minioClient.putObject(PutObjectArgs.builder()
-                    .bucket(BUCKET_NAME)
+                    .bucket(bucketName)
                     .object(imageName)
                     .stream(imageStream, imageStream.available(), -1)
                     .build());
             return imageName;
         } catch (MinioException | IllegalArgumentException | IOException | InvalidKeyException |
                  NoSuchAlgorithmException e) {
-            throw new ImageUploadException("Error upload");
+            throw new ImageUploadException(e.getMessage());
         }
     }
 
     public byte[] findImage(String imageName) {
         try (InputStream object =
                      minioClient.getObject(
-                             GetObjectArgs.builder().bucket(BUCKET_NAME).object(imageName).build())) {
+                             GetObjectArgs.builder().bucket(bucketName).object(imageName).build())) {
             return IOUtils.toByteArray(object);
 
         } catch (MinioException | IllegalArgumentException | IOException | InvalidKeyException |

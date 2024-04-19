@@ -8,8 +8,6 @@ import org.university.diplom.dto.CommonDto;
 
 public interface CalculationService {
     XYSeriesCollection calculate (CommonDto commonDto);
-
     FunctionType getType();
-
     String toFunction(CommonDto commonDto);
 }

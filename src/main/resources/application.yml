@@ -1,4 +1,3 @@
-
 server:
   error:
     include-stacktrace: always
@@ -7,22 +6,8 @@ server:
   port: '8082'
   tomcat:
     max-swallow-size: -1
-
-logging:
-  level:
-    org:
-      springframework: INFO
-    com:
-      senla: INFO
 request:
   host: http://localhost:8080
-feign:
-  client:
-    config:
-      default:
-        connectTimeout: 5000
-        readTimeout: 5000
-        loggerLevel: full
 role:
   admin: ADMIN
 app:
@@ -30,8 +15,21 @@ app:
     file-size: 50
 spring:
   minio:
-    url: ${MINIO_HOST:http://minio:9000}
+    url: http://localhost:9000
     bucket:
-      image: ${MINIO_IMAGE_PACKAGE:image}
-    access-key: ${MINIO_LOGIN:imageStorage}
-    secret-key: ${MINIO_PASS:imageStorage}
+      image: image
+    access-key: imageStorage
+    secret-key: imageStorage
+  liquibase:
+    change-log: db/changelog/db.changelog-master.xml
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:54320/wave_db
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: validate
+  web:
+    resources:
+      static-locations: classpath:/static/

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <link rel="stylesheet" href="/css/main.css">
+    <meta charset="UTF-8">
+    <title>Graphic Generator</title>
+</head>
+<body>
+<div class="wrapper">
+    <div class="image_block">
+        <img id="image" th:src="${imageSrc}" alt="Graph Image"/>
+    </div>
+    <div class="function_block">
+        <div class="select_block">
+            <div class="box">
+            </div>
+        </div>
+        <form method="post"
+              role="form"
+              th:action="@{/graph}"
+              th:object="${commonDto}">
+            <div class="input_block">
+                <label>
+                    <input type="text"
+                           id="amplitude"
+                           name="amplitude"
+                           placeholder="Write your amplitude"
+                           th:field="*{amplitude}"
+                           required
+                           pattern="-?\d+(\.\d+)?"
+                           title="Please enter a valid double value."
+                    />
+                </label>
+                <label>
+                    <input type="text"
+                           id="waveLength"
+                           name="waveLength"
+                           placeholder="Write your waveLength"
+                           th:field="*{waveLength}"
+                           required
+                           pattern="-?\d+(\.\d+)?"
+                           title="Please enter a valid double value."/>
+                </label>
+                <label>
+                    <input type="text"
+                           id="step"
+                           name="step"
+                           placeholder="Write your step"
+                           th:field="*{step}"
+                           required
+                           pattern="-?\d+(\.\d+)?"
+                           title="Please enter a valid double value."/>
+                </label>
+                <label>
+                    <select type="text"
+                           id="type"
+                           name="type"
+                           th:field="*{type}"
+                           required>
+                        <option value="MECHANICAL">Mechanical</option>
+                        <option value="COHERENT">Coherent</option>
+                        <option value="ADDITION">Addition</option>
+                    </select>
+                </label>
+                <button type="submit">Отправить</button>
+            </div>
+        </form>
+    </div>
+
+</div>
+</body>
+</html>

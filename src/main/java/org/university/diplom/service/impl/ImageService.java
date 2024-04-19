@@ -17,8 +17,6 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class ImageService {
 
-    private final MinioService minioService;
-
     @Value("${spring.minio.bucket.image}")
     private String bucketName;
 
@@ -33,7 +31,7 @@ public class ImageService {
                 true,
                 false
         );
-        BufferedImage bufferedImage = chart.createBufferedImage(500, 500);
+        BufferedImage bufferedImage = chart.createBufferedImage(1024, 1024);
         return convertToByteArray(bufferedImage);
     }
 

@@ -13,5 +13,5 @@ public interface FunctionEntityRepository extends JpaRepository<FunctionEntity, 
 
     Optional<FunctionEntity> findByFunctionAndFunctionType(String function, FunctionType functionType);
 
-    Boolean existByFunctionAndFunctionType(String function, FunctionType functionType);
+  //  Boolean existByFunctionAndFunctionType(String function, FunctionType functionType);
 }

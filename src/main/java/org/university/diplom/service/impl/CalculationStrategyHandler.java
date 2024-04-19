@@ -11,9 +11,9 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class CalculationStrategyHandler {
 
-    private Map<FunctionType, CalculationService> store;
+    private final Map<FunctionType, CalculationService> store;
 
-    public CalculationService handle(FunctionType functionType  ){
+    public CalculationService handle(FunctionType functionType){
        return store.get(functionType);
     }
 }

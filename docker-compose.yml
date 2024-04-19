@@ -2,7 +2,7 @@ services:
   app:
       build: .
       ports:
-        - 8080:8080
+        - 8082:8082
       depends_on:
         - postgres
         - minio
@@ -23,8 +23,21 @@ services:
     hostname: minio
     ports:
       - "9000:9000"
+      - "9002:9001"
     env_file:
       - ./.env.minio
     environment:
+      MINIO_CONSOLE_ADDRESS: ':9001'
       MINIO_ROOT_USER: "imageStorage"
       MINIO_ROOT_PASSWORD: "imageStorage"
+  createbuckets:
+    image: minio/mc
+    depends_on:
+        - minio
+    entrypoint: >
+          /bin/sh -c "
+          /usr/bin/mc alias set myminio http://minio:9000 imageStorage imageStorage;
+          /usr/bin/mc mb myminio/image;
+          /usr/bin/mc policy set public myminio/image;
+          exit 0;
+          "

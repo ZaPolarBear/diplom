@@ -19,6 +19,7 @@ public class FunctionEntity {
     @GeneratedValue
     private UUID id;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private FunctionType functionType;
 

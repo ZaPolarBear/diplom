@@ -19,13 +19,13 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class Processor {
 
-    private CalculationStrategyHandler calculationStrategyHandler;
+    private final CalculationStrategyHandler calculationStrategyHandler;
 
-    private FunctionEntityRepository functionEntityRepository;
+    private final FunctionEntityRepository functionEntityRepository;
 
-    private ImageService imageService;
+    private final ImageService imageService;
 
-    private MinioService minioService;
+    private final MinioService minioService;
 
     public byte[] process(CommonDto commonDto) {
         FunctionType functionType = commonDto.getType();
