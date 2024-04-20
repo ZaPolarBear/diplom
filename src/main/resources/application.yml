@@ -1,0 +1,35 @@
+server:
+  error:
+    include-stacktrace: always
+    include-exception: 'true'
+    include-message: always
+  port: '8082'
+  tomcat:
+    max-swallow-size: -1
+request:
+  host: http://localhost:8080
+role:
+  admin: ADMIN
+app:
+  image:
+    file-size: 50
+spring:
+  minio:
+    url: http://localhost:9000
+    bucket:
+      image: image
+    access-key: imageStorage
+    secret-key: imageStorage
+  liquibase:
+    change-log: db/changelog/db.changelog-master.xml
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:54320/wave_db
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: validate
+  web:
+    resources:
+      static-locations: classpath:/static/
