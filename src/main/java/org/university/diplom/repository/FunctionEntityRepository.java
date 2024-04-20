@@ -11,7 +11,7 @@ import java.util.UUID;
 @Repository
 public interface FunctionEntityRepository extends JpaRepository<FunctionEntity, UUID> {
 
-    Optional<FunctionEntity> findByFunctionAndFunctionType(String function, FunctionType functionType);
+    Optional<FunctionEntity> findByFunctionAndType(String function, FunctionType functionType);
 
   //  Boolean existByFunctionAndFunctionType(String function, FunctionType functionType);
 }
