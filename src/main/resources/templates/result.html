@@ -6,8 +6,8 @@
     <title>Graphic Result</title>
 </head>
 <body>
-    <div class="wrapper">
-        <img id="image" th:src="@{|/graph/result/{imageSrc}|}" alt="Graph Image"/>
+    <div class="wrapper" th:object="${resultDto}">
+        <img id="image" th:src="@{|/graph/result/image/${resultDto.imageName}}" alt="Graph Image"/>
     </div>
 </body>
 </html>

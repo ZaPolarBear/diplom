@@ -9,9 +9,8 @@ import org.university.diplom.constants.FunctionType;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ResultDto {
-
     private String imageName;
     private String function;
+    private byte[] imageBytes;
     private FunctionType type;
-
 }

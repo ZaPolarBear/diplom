@@ -50,7 +50,7 @@ public class MinioService {
 
         } catch (MinioException | IllegalArgumentException | IOException | InvalidKeyException |
                  NoSuchAlgorithmException e) {
-            throw new ImageUploadException("Error upload");
+            throw new ImageUploadException(e.getMessage());
         }
     }
 }
