@@ -7,7 +7,7 @@
 </head>
 <body>
     <div class="wrapper">
-        <img id="image" th:src="@{'/img/image.png'}"  alt="Graph Image"/>
+        <img id="image" th:src="@{|/graph/result/{imageSrc}|}" alt="Graph Image"/>
     </div>
 </body>
 </html>

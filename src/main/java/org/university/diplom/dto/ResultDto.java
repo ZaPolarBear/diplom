@@ -5,25 +5,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.university.diplom.constants.FunctionType;
 
-import javax.validation.constraints.NotBlank;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CommonDto {
+public class ResultDto {
 
-    @NotBlank
-    private double amplitude;
-
-    @NotBlank
-    private double waveLength;
-
-    @NotBlank
-    private double step;
-
-    @NotBlank
+    private String imageName;
+    private String function;
     private FunctionType type;
-
-    private CommonDto commonDto;
 
 }

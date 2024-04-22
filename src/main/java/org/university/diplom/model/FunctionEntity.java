@@ -21,7 +21,7 @@ public class FunctionEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private FunctionType functionType;
+    private FunctionType type;
 
     @Column(nullable = false)
     private String function;

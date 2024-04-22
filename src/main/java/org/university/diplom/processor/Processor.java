@@ -27,24 +27,24 @@ public class Processor {
 
     private final MinioService minioService;
 
-    public byte[] process(CommonDto commonDto) {
+    public String process(CommonDto commonDto) {
         FunctionType functionType = commonDto.getType();
         CalculationService service = calculationStrategyHandler.handle(functionType);
         String function = service.toFunction(commonDto);
-        Optional<FunctionEntity> entity = functionEntityRepository.findByFunctionAndFunctionType(function, functionType);
+        Optional<FunctionEntity> entity = functionEntityRepository.findByFunctionAndType(function, functionType);
         if (entity.isPresent()) {
-            return minioService.findImage(entity.get().getImageName().toString());
+            return entity.get().getImageName().toString();
         } else {
             XYSeriesCollection dataset = service.calculate(commonDto);
             byte[] image = imageService.generateImage(dataset);
             String imageName = minioService.upload(image);
             FunctionEntity functionEntity = FunctionEntity.builder()
                     .function(function)
-                    .functionType(functionType)
+                    .type(functionType)
                     .imageName(UUID.fromString(imageName))
                     .build();
             functionEntityRepository.save(functionEntity);
-            return image;
+            return imageName;
         }
     }
 }

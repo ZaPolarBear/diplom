@@ -8,10 +8,10 @@
             <column name="id" type="UUID">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="function_type" type="varchar(512)">
+            <column name="type" type="varchar(128)">
                 <constraints nullable="false"/>
             </column>
-            <column name="function" type="varchar(512)">
+            <column name="function" type="varchar(128)">
                 <constraints nullable="false"/>
             </column>
             <column name="image_name" type="UUID">
