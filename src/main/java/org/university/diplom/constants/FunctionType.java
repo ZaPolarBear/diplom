@@ -8,6 +8,8 @@ public enum FunctionType {
 
     BEATING,
 
-    ADDITION
+    ADDITION,
+
+    INTERFERENCE
 
 }

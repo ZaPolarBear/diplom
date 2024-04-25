@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/graph.css">
     <meta charset="UTF-8">
     <title>Graphic Generator</title>
 </head>
 <body>
 <div class="wrapper">
-    <div class="image_block" th:object="${resultDto}" th:unless="${resultDto == null}">
-        <img id="image" th:src="@{|/graph/image/${resultDto.imageName}}" alt="Graph Image"/>
+    <div class="image_block" th:object="${resultDto}">
+        <div  th:unless="${resultDto == null}">
+            <img id="image" th:src="@{|/graph/image/${resultDto.imageName}}" alt="Graph Image"/>
+        </div>
     </div>
     <div class="function_block">
         <div class="select_block">
@@ -21,6 +23,9 @@
               th:object="${commonDto}">
             <div class="input_block">
                 <label>
+                    <a>Write amplitude:</a>
+                </label>
+                <label>
                     <input type="text"
                            id="amplitude"
                            name="amplitude"
@@ -30,6 +35,9 @@
                            pattern="-?\d+(\.\d+)?"
                            title="Please enter a valid double value."
                     />
+                </label>
+                <label>
+                    <a>Write wave length:</a>
                 </label>
                 <label>
                     <input type="text"
@@ -42,11 +50,14 @@
                            title="Please enter a valid double value."/>
                 </label>
                 <label>
+                    <a>Write step:</a>
+                </label>
+                <label>
                     <input type="text"
                            id="step"
                            name="step"
                            placeholder="Write your step"
-                           th:field="*{step}"
+                           th:field="*{phaseDifference}"
                            required
                            pattern="-?\d+(\.\d+)?"
                            title="Please enter a valid double value."/>
@@ -60,6 +71,7 @@
                         <option value="MECHANICAL">Mechanical</option>
                         <option value="COHERENT">Coherent</option>
                         <option value="ADDITION">Addition</option>
+                        <option value="INTERFERENCE">INTERFERENCE</option>
                     </select>
                 </label>
                 <button type="submit">Отправить</button>
