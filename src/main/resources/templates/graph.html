@@ -7,8 +7,8 @@
 </head>
 <body>
 <div class="wrapper">
-    <div class="image_block">
-        <img id="image" th:src="${imageSrc}" alt="Graph Image"/>
+    <div class="image_block" th:object="${resultDto}" th:unless="${resultDto == null}">
+        <img id="image" th:src="@{|/graph/image/${resultDto.imageName}}" alt="Graph Image"/>
     </div>
     <div class="function_block">
         <div class="select_block">
