@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.university.diplom.constants.FunctionType;
 import org.university.diplom.dto.CommonDto;
 import org.university.diplom.dto.ResultDto;
 import org.university.diplom.processor.Processor;
@@ -21,22 +22,23 @@ public class FunctionGenerationController {
     private final Processor processor;
     private final MinioService minioService;
 
-    @GetMapping("/graph")
+    @GetMapping("/mechanical")
     public String displayGraphPage(Model model) {
         CommonDto commonDto = new CommonDto();
         model.addAttribute("commonDto", commonDto);
-        return "graph";
+        return "mechanical";
     }
 
-    @PostMapping("/graph")
+    @PostMapping("/mechanical")
     public String process(CommonDto commonDto, Model model) {
+        commonDto.setType(FunctionType.MECHANICAL);
         ResultDto resultDto = processor.process(commonDto);
         model.addAttribute("resultDto", resultDto);
-        return "graph";
+        return "mechanical";
     }
 
     @ResponseBody
-    @GetMapping("/graph/image/{imageName}")
+    @GetMapping("/mechanical/image/{imageName}")
     public byte[] downloadImage(@PathVariable UUID imageName) {
         return minioService.findImage(imageName.toString());
     }

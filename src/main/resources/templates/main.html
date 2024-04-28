@@ -3,15 +3,19 @@
 <head>
     <link rel="stylesheet" href="/css/main.css">
     <meta charset="UTF-8">
-    <title>Computer modeling</title>
+    <title>Graphic Generator</title>
 </head>
-<body>
-<form method="post"
-      role="form"
-      th:action="@{/main}">
-        <button>
-            Open tab
-        </button>
-</form>
+<body th:class="body">
+    <form method="post"
+          role="form"
+          th:action="@{/main}"
+          th:object="${nextPage}">
+            <div>
+                <button th:class="button" th:href="@{/mechanical}" style="--clr:#39FF14"><span>Mechanical</span><i></i></button>
+                <button th:class="button" th:href="@{/beating}" style="--clr:#39FF14"><span>Beating</span><i></i></button>
+                <button th:class="button" th:href="@{/interference}" style="--clr:#39FF14"><span>Interference</span><i></i></button>
+                <button th:class="button" th:href="@{/addition}" style="--clr:#39FF14"><span>Addition</span><i></i></button>
+            </div>
+    </form>
 </body>
 </html>
