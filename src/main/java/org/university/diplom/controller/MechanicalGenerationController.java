@@ -17,17 +17,10 @@ import java.util.UUID;
 
 @Controller
 @RequiredArgsConstructor
-public class FunctionGenerationController {
+public class MechanicalGenerationController {
 
     private final Processor processor;
     private final MinioService minioService;
-
-    @GetMapping("/mechanical")
-    public String displayGraphPage(Model model) {
-        CommonDto commonDto = new CommonDto();
-        model.addAttribute("commonDto", commonDto);
-        return "mechanical";
-    }
 
     @PostMapping("/mechanical")
     public String process(CommonDto commonDto, Model model) {

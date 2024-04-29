@@ -6,15 +6,20 @@
     <title>Graphic Generator</title>
 </head>
 <body th:class="body">
-    <form method="post"
-          role="form"
-          th:action="@{/main}"
-          th:object="${nextPage}">
+    <form>
             <div>
-                <button th:class="button" th:href="@{/mechanical}" style="--clr:#39FF14"><span>Mechanical</span><i></i></button>
-                <button th:class="button" th:href="@{/beating}" style="--clr:#39FF14"><span>Beating</span><i></i></button>
-                <button th:class="button" th:href="@{/interference}" style="--clr:#39FF14"><span>Interference</span><i></i></button>
-                <button th:class="button" th:href="@{/addition}" style="--clr:#39FF14"><span>Addition</span><i></i></button>
+                    <button class="button" style="--clr:#39FF14">
+                        <span><a th:href="@{/mechanical}">Mechanical</a></span><i></i>
+                    </button>
+                    <button class="button" style="--clr:#39FF14">
+                        <span><a th:href="@{/beating}">Beating </a></span><i></i>
+                    </button>
+                    <button class="button" style="--clr:#39FF14">
+                        <span><a th:href="@{/interference}">Interference</a></span><i></i>
+                    </button>
+                    <button class="button" style="--clr:#39FF14">
+                        <span> <a th:href="@{/addition}">Addition</a></span><i></i>
+                    </button>
             </div>
     </form>
 </body>

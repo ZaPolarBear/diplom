@@ -7,11 +7,6 @@
 </head>
 <body>
 <div class="wrapper">
-    <div class="image_block" th:object="${resultDto}">
-        <div th:unless="${resultDto == null}">
-            <img id="image" th:src="@{|/mechanical/image/${resultDto.imageName}}" alt="Graph Image"/>
-        </div>
-    </div>
     <div class="function_block">
         <div class="select_block">
             <div class="box">
@@ -52,21 +47,15 @@
                 <label>
                     <a>Write step:</a>
                 </label>
-                <label>
-                    <input type="text"
-                           id="step"
-                           name="step"
-                           placeholder="Write your step"
-                           th:field="*{step}"
-                           required
-                           pattern="-?\d+(\.\d+)?"
-                           title="Please enter a valid double value."/>
-                </label>
-                <button type="submit">Отправить</button>
+                <button type="submit" class="box">Отправить</button>
             </div>
         </form>
     </div>
-
+    <div class="image_block" th:object="${resultDto}">
+        <div th:unless="${resultDto == null}">
+            <img id="image" th:src="@{|/mechanical/image/${resultDto.imageName}}" alt="Graph Image"/>
+        </div>
+    </div>
 </div>
 </body>
 </html>
