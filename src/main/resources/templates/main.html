@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <link rel="stylesheet" href="/css/main.css">
+    <meta charset="UTF-8">
+    <title>Graphic Generator</title>
+</head>
+<body th:class="body">
+    <form>
+            <div>
+                    <button class="button" style="--clr:#39FF14">
+                        <span><a th:href="@{/mechanical}">Mechanical</a></span><i></i>
+                    </button>
+                    <button class="button" style="--clr:#39FF14">
+                        <span><a th:href="@{/beating}">Beating </a></span><i></i>
+                    </button>
+                    <button class="button" style="--clr:#39FF14">
+                        <span><a th:href="@{/interference}">Interference</a></span><i></i>
+                    </button>
+                    <button class="button" style="--clr:#39FF14">
+                        <span> <a th:href="@{/addition}">Addition</a></span><i></i>
+                    </button>
+            </div>
+    </form>
+</body>
+</html>

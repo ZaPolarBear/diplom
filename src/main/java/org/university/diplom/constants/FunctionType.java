@@ -4,10 +4,10 @@ public enum FunctionType {
 
     MECHANICAL,
 
-    COHERENT,
-
     BEATING,
 
-    ADDITION
+    ADDITION,
+
+    INTERFERENCE
 
 }

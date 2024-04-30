@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <link rel="stylesheet" href="/css/graph.css">
+    <meta charset="UTF-8">
+    <title>Graphic interference</title>
+</head>
+<body>
+<div class="wrapper">
+    <div class="function_block">
+        <div class="select_block">
+            <div class="box">
+            </div>
+        </div>
+        <form method="post"
+              role="form"
+              th:action="@{/interference}"
+              th:object="${commonDto}">
+            <div class="input_block">
+                <label>
+                    <a>Write amplitude:</a>
+                </label>
+                <label>
+                    <input type="text"
+                           id="amplitude"
+                           name="amplitude"
+                           placeholder="Write your amplitude"
+                           th:field="*{amplitude}"
+                           required
+                           pattern="-?\d+(\.\d+)?"
+                           title="Please enter a valid double value."
+                    />
+                </label>
+                <label>
+                    <a>Write wave length:</a>
+                </label>
+                <label>
+                    <input type="text"
+                           id="waveLength"
+                           name="waveLength"
+                           placeholder="Write your waveLength"
+                           th:field="*{waveLength}"
+                           required
+                           pattern="-?\d+(\.\d+)?"
+                           title="Please enter a valid double value."/>
+                </label>
+                <label>
+                    <a>Write step:</a>
+                </label>
+                <label>
+                    <input type="text"
+                           id="step"
+                           name="step"
+                           placeholder="Write your step"
+                           th:field="*{step}"
+                           required
+                           pattern="-?\d+(\.\d+)?"
+                           title="Please enter a valid double value."/>
+                </label>
+                <button type="submit">Отправить</button>
+            </div>
+        </form>
+    </div>
+    <div class="image_block" th:object="${resultDto}">
+        <div th:unless="${resultDto == null}">
+            <img id="image" th:src="@{|/interference/image/${resultDto.imageName}}" alt="Graph Image"/>
+        </div>
+    </div>
+</div>
+</body>
+</html>

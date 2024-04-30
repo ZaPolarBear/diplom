@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/graph.css">
     <meta charset="UTF-8">
-    <title>Graphic Generator</title>
+    <title>Graphic addition</title>
 </head>
 <body>
 <div class="wrapper">
-    <div class="image_block" th:object="${resultDto}" th:unless="${resultDto == null}">
-        <img id="image" th:src="@{|/graph/image/${resultDto.imageName}}" alt="Graph Image"/>
-    </div>
     <div class="function_block">
         <div class="select_block">
             <div class="box">
@@ -17,9 +14,12 @@
         </div>
         <form method="post"
               role="form"
-              th:action="@{/graph}"
+              th:action="@{/addition}"
               th:object="${commonDto}">
             <div class="input_block">
+                <label>
+                    <a>Write amplitude:</a>
+                </label>
                 <label>
                     <input type="text"
                            id="amplitude"
@@ -32,6 +32,9 @@
                     />
                 </label>
                 <label>
+                    <a>Write wave length:</a>
+                </label>
+                <label>
                     <input type="text"
                            id="waveLength"
                            name="waveLength"
@@ -40,6 +43,9 @@
                            required
                            pattern="-?\d+(\.\d+)?"
                            title="Please enter a valid double value."/>
+                </label>
+                <label>
+                    <a>Write step:</a>
                 </label>
                 <label>
                     <input type="text"
@@ -51,22 +57,15 @@
                            pattern="-?\d+(\.\d+)?"
                            title="Please enter a valid double value."/>
                 </label>
-                <label>
-                    <select type="text"
-                           id="type"
-                           name="type"
-                           th:field="*{type}"
-                           required>
-                        <option value="MECHANICAL">Mechanical</option>
-                        <option value="COHERENT">Coherent</option>
-                        <option value="ADDITION">Addition</option>
-                    </select>
-                </label>
                 <button type="submit">Отправить</button>
             </div>
         </form>
     </div>
-
+    <div class="image_block" th:object="${resultDto}">
+        <div th:unless="${resultDto == null}">
+            <img id="image" th:src="@{|/addition/image/${resultDto.imageName}}" alt="Graph Image"/>
+        </div>
+    </div>
 </div>
 </body>
 </html>

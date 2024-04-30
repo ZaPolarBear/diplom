@@ -22,7 +22,7 @@ public class ImageService {
 
     public byte[] generateImage(XYSeriesCollection dataset) {
         JFreeChart chart = ChartFactory.createXYLineChart(
-                "Mechanical Wave",
+                "",
                 "X Axis",
                 "Y Axis",
                 dataset,
@@ -31,7 +31,7 @@ public class ImageService {
                 true,
                 false
         );
-        BufferedImage bufferedImage = chart.createBufferedImage(1024, 1024);
+        BufferedImage bufferedImage = chart.createBufferedImage(650, 650);
         return convertToByteArray(bufferedImage);
     }
 

@@ -8,6 +8,6 @@ public class BootController {
 
     @GetMapping("/")
     public String appStart(){
-        return "redirect:graph";
+        return "redirect:main";
     }
 }
