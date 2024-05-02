@@ -29,6 +29,9 @@ public class FunctionEntity {
     @Column(nullable = false)
     private UUID imageName;
 
+    @Column(nullable = false)
+    private UUID fileName;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

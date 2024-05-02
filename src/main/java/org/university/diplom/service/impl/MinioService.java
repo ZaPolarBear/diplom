@@ -24,9 +24,12 @@ public class MinioService {
     private final MinioClient minioClient;
 
     @Value("${spring.minio.bucket.image}")
-    private String bucketName;
+    private String bucketImageName;
 
-    public String upload(byte[] file){
+    @Value("${spring.minio.bucket.file}")
+    private String bucketFileName;
+
+    public String upload(byte[] file, String bucketName){
         InputStream imageStream = new ByteArrayInputStream(file);
         String imageName = UUID.randomUUID().toString();
         try {
@@ -45,7 +48,7 @@ public class MinioService {
     public byte[] findImage(String imageName) {
         try (InputStream object =
                      minioClient.getObject(
-                             GetObjectArgs.builder().bucket(bucketName).object(imageName).build())) {
+                             GetObjectArgs.builder().bucket(bucketImageName).object(imageName).build())) {
             return IOUtils.toByteArray(object);
 
         } catch (MinioException | IllegalArgumentException | IOException | InvalidKeyException |

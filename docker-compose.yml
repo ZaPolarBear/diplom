@@ -38,6 +38,8 @@ services:
           /bin/sh -c "
           /usr/bin/mc alias set myminio http://minio:9000 imageStorage imageStorage;
           /usr/bin/mc mb myminio/image;
+          /usr/bin/mc mb myminio/file;
           /usr/bin/mc policy set public myminio/image;
+          /usr/bin/mc policy set public myminio/file;
           exit 0;
           "

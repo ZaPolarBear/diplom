@@ -17,6 +17,9 @@
             <column name="image_name" type="UUID">
                 <constraints nullable="false"/>
             </column>
+            <column name="file_name" type="UUID">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
     </changeSet>
 </databaseChangeLog>

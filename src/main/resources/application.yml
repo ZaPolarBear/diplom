@@ -18,8 +18,10 @@ spring:
     url: http://localhost:9000
     bucket:
       image: image
+      file: file
     access-key: imageStorage
     secret-key: imageStorage
+
   liquibase:
     change-log: db/changelog/db.changelog-master.xml
   datasource:
