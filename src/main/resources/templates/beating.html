@@ -8,17 +8,21 @@
 <body>
 <div class="wrapper">
     <div class="function_block">
-        <div class="select_block">
-            <div class="box">
+        <div>
+            <div>
+                <a class="a" th:href="@{/main}">Back</a>
+            </div>
+            <div th:object="${resultDto}">
+                <a class="a" id="function" th:unless="${resultDto} == null" th:text="${resultDto.getFunction()}"></a>
             </div>
         </div>
         <form method="post"
               role="form"
               th:action="@{/beating}"
               th:object="${commonDto}">
-            <div class="input_block">
+            <div class="input_block_wide">
                 <label>
-                    <a>Write amplitude:</a>
+                    <a class="a">Write amplitude:</a>
                 </label>
                 <label>
                     <input type="text"
@@ -32,32 +36,48 @@
                     />
                 </label>
                 <label>
-                    <a>Write wave length:</a>
+                    <a class="a">Write frequency:</a>
                 </label>
                 <label>
                     <input type="text"
-                           id="waveLength"
-                           name="waveLength"
-                           placeholder="Write your waveLength"
-                           th:field="*{waveLength}"
+                           id="frequency"
+                           name="frequency"
+                           placeholder="Write your frequency"
+                           th:field="*{frequency}"
                            required
                            pattern="-?\d+(\.\d+)?"
                            title="Please enter a valid double value."/>
                 </label>
                 <label>
-                    <a>Write step:</a>
+                    <a class="a">Write second amplitude:</a>
                 </label>
                 <label>
                     <input type="text"
-                           id="step"
-                           name="step"
-                           placeholder="Write your step"
-                           th:field="*{step}"
+                           id="amplitudeSecond"
+                           name="amplitudeSecond"
+                           placeholder="Write your amplitudeSecond"
+                           th:field="*{amplitudeSecond}"
                            required
                            pattern="-?\d+(\.\d+)?"
                            title="Please enter a valid double value."/>
                 </label>
-                <button type="submit">Отправить</button>
+                <label>
+                    <a class="a">Write second frequency:</a>
+                </label>
+                <label>
+                    <input type="text"
+                           id="frequencySecond"
+                           name="frequencySecond"
+                           placeholder="Write your frequencySecond"
+                           th:field="*{frequencySecond}"
+                           required
+                           pattern="-?\d+(\.\d+)?"
+                           title="Please enter a valid double value."/>
+                </label>
+            </div>
+            <div class="button_block">
+                <button type="submit" class="box">Send</button>
+                <button type="submit" class="box">Get Table</button>
             </div>
         </form>
     </div>

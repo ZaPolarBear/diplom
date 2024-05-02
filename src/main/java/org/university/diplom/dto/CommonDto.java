@@ -14,6 +14,9 @@ public class CommonDto {
     private double amplitude;
     private double waveLength;
     private double step;
+    private double amplitudeSecond;
+    private double frequency;
+    private double frequencySecond;
     private FunctionType type;
 
     private CommonDto commonDto;

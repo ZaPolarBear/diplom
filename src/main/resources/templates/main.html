@@ -8,18 +8,23 @@
 <body th:class="body">
     <form>
             <div>
-                    <button class="button" style="--clr:#39FF14">
-                        <span><a th:href="@{/mechanical}">Mechanical</a></span><i></i>
-                    </button>
-                    <button class="button" style="--clr:#39FF14">
-                        <span><a th:href="@{/beating}">Beating </a></span><i></i>
-                    </button>
-                    <button class="button" style="--clr:#39FF14">
-                        <span><a th:href="@{/interference}">Interference</a></span><i></i>
-                    </button>
-                    <button class="button" style="--clr:#39FF14">
-                        <span> <a th:href="@{/addition}">Addition</a></span><i></i>
-                    </button>
+                <button class="button" >
+                    <IMG class="img" th:src="@{/images/Vector.svg}">
+                    <a th:href="@{mechanical}">Mechanical</a>
+                </button>
+                <button class="button">
+                    <IMG class="img" th:src="@{/images/Vector.svg}">
+                    <a th:href="@{/interference}">Interference</a>
+                </button>
+                <button class="button">
+                    <IMG class="img" th:src="@{/images/Vector.svg}">
+                    <a th:href="@{/addition}">Addition</a>
+                </button>
+                <button class="button">
+                    <IMG class="img" th:src="@{/images/Vector.svg}">
+                    <a th:href="@{/beating}">Beating</a>
+                </button>
+
             </div>
     </form>
 </body>
