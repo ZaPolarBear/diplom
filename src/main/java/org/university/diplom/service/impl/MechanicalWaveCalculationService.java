@@ -26,7 +26,7 @@ public class MechanicalWaveCalculationService implements CalculationService {
     public XYSeriesCollection calculate(CommonDto commonDto) {
         double y;
         final XYSeries waveLine = new XYSeries("MechanicalWave");
-        for (double x = 0; x < 100; x += commonDto.getStep()){
+        for (double x = 0; x < 100; x += commonDto.getStep()) {
             y = commonDto.getAmplitude() * sin(((2 * Math.PI) / commonDto.getWaveLength()) * x);
             waveLine.add(x, y);
         }
@@ -42,7 +42,6 @@ public class MechanicalWaveCalculationService implements CalculationService {
 
     @Override
     public String toFunction(CommonDto commonDto){
-        return commonDto.getAmplitude() + " " + "* sin(" + (2 * Math.PI) + " / " +  commonDto.getWaveLength() + ")";
+        return commonDto.getAmplitude() + " " + "* sin(" + (2 * Math.PI) + " / " +  commonDto.getWaveLength() + ")" + " step: " + commonDto.getStep();
     }
-
 }

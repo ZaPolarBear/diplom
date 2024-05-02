@@ -8,17 +8,21 @@
 <body>
 <div class="wrapper">
     <div class="function_block">
-        <div class="select_block">
-            <div class="box">
+        <div>
+            <div>
+                <a class="a" th:href="@{/main}">Back</a>
+            </div>
+            <div th:object="${resultDto}">
+                <a class="a" id="function" th:unless="${resultDto} == null" th:text="${resultDto.getFunction()}"></a>
             </div>
         </div>
         <form method="post"
               role="form"
               th:action="@{/mechanical}"
               th:object="${commonDto}">
-            <div class="input_block">
+            <div class="input_block_short">
                 <label>
-                    <a>Write amplitude:</a>
+                    <a class="a">Write amplitude:</a>
                 </label>
                 <label>
                     <input type="text"
@@ -32,7 +36,7 @@
                     />
                 </label>
                 <label>
-                    <a>Write wave length:</a>
+                    <a class="a">Write wave length:</a>
                 </label>
                 <label>
                     <input type="text"
@@ -45,11 +49,24 @@
                            title="Please enter a valid double value."/>
                 </label>
                 <label>
-                    <a>Write step:</a>
+                    <a class="a">Write step:</a>
                 </label>
-                <button type="submit" class="box">Отправить</button>
+                <label>
+                    <input type="text"
+                           id="step"
+                           name="step"
+                           placeholder="Write your step"
+                           th:field="*{step}"
+                           required
+                           pattern="-?\d+(\.\d+)?"
+                           title="Please enter a valid double value."/>
+                </label>
             </div>
-        </form>
+            <div class="button_block">
+                <button type="submit" class="box">Send</button>
+                <button type="submit" class="box">Get Table</button>
+            </div>
+       </form>
     </div>
     <div class="image_block" th:object="${resultDto}">
         <div th:unless="${resultDto == null}">

@@ -1,34 +1,79 @@
-html, body {
-    height: 100%;
+* {
+    box-sizing: border-box;
 }
 
+.body {
+
+    gap: 1rem;
+    min-height: 100vh;
+}
 .wrapper {
-    background-color: #27272c;
+    background-color: #ffffff;
     min-height: 100%;
     display: flex;
     flex-direction: row;
 }
 .function_block{
+    margin-top: 10px;
     flex: 1;
     display: flex;
     flex-direction: column;
 }
 .image_block{
-    flex: 3;
+    flex: 2;
+    margin-left: 100px;
     background-color: #ffffff;
+
 }
 .select_block{
     flex: 1;
     flex-direction: row;
     background-color: #ffffff;
 }
-.input_block{
-    flex: 10;
+.input_block_wide{
+    margin-top: 250px;
+    flex: 1;
     display: flex;
+    width: 250px;
     flex-direction: column;
     background-color: #ffffff;
 }
-.input_block input{
+.input_block_short{
+    margin-top: 300px;
+    flex: 1;
+    display: flex;
+    width: 250px;
+    flex-direction: column;
+    background-color: #ffffff;
+}
+.button_block{
+    flex: 10;
+    display: flex;
+    width: 150px;
+    height: 100px;
+    flex-direction: column;
+}
+
+.button_block button{
+    background-color: black;
+    border-radius: 8px;
+    margin-top: 10px;
+    font-size: 16px;
+    color: lightgray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bolder;
+}
+
+.a {
+    text-decoration: none;
+    color: #000;
+    font-family: "Arial Black";
+}
+
+
+.input_block_short input{
     box-sizing: border-box;
     width: 100%;
     height: 36px;
@@ -37,10 +82,25 @@ html, body {
     font-size: 16px;
     border-radius: 8px;
     text-overflow: ellipsis;
-    background-color: #cbcbcb;
+    background-color: #ffffff;
     margin-top: 6px;
     margin-bottom: 6px;
 }
+
+.input_block_wide input{
+    box-sizing: border-box;
+    width: 100%;
+    height: 36px;
+    padding: 8px 12px;
+    line-height: 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    text-overflow: ellipsis;
+    background-color: #ffffff;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
 
 .box {
     flex: 1;
@@ -71,8 +131,8 @@ html, body {
     text-align: center;
     font-size: 28px;
     line-height: 45px;
-    color: rgba(255, 255, 255, 0.5);
-    background-color: rgba(255, 255, 255, 0.1);
+    color: rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255);
     pointer-events: none;
 }
 

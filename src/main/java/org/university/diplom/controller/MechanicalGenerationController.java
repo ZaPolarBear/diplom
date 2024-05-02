@@ -32,7 +32,6 @@ public class MechanicalGenerationController {
 
     @ResponseBody
     @GetMapping("/mechanical/image/{imageName}")
-    public byte[] downloadImage(@PathVariable UUID imageName) {
-        return minioService.findImage(imageName.toString());
+    public byte[] downloadImage(@PathVariable UUID imageName) {return minioService.findImage(imageName.toString());
     }
 }
