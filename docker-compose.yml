@@ -3,9 +3,12 @@ services:
       build: .
       ports:
         - 8082:8082
+      env_file:
+        - ./.env.postgres
       depends_on:
         - postgres
         - minio
+      restart: on-failure
   postgres:
     image: postgres:latest
     container_name: postgres

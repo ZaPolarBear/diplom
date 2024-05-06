@@ -1,6 +1,7 @@
 package org.university.diplom.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +23,9 @@ public class BeatingGenerationController {
     private final Processor processor;
     private final MinioService minioService;
 
+    @Value("${spring.minio.bucket.image}")
+    private String bucketImageName;
+
     @PostMapping("/beating")
     public String process(CommonDto commonDto, Model model) {
         commonDto.setType(FunctionType.BEATING);
@@ -32,6 +36,6 @@ public class BeatingGenerationController {
 
     @ResponseBody
     @GetMapping("/beating/image/{imageName}")
-    public byte[] downloadImage(@PathVariable UUID imageName) {return minioService.findImage(imageName.toString());
+    public byte[] downloadImage(@PathVariable UUID imageName) {return minioService.find(imageName.toString(), bucketImageName);
     }
 }
