@@ -1,4 +1,4 @@
-### Diplom Project
+## Diplom Project
 This project was made for creating various type of graphics
 There you can:
 * Make gpahs
@@ -8,8 +8,8 @@ There you can:
 * Wave interference
 * Download graph images
 * Get data tables to work with in another programs
-### Technologies used
-Stack:
+## Technologies used
+### Stack:
 * Java 17.
 * Spring: Spring Boot, Spring MVC, Data JPA, Spring Validation.
 * JFreeChart - fast graph generating with opportunity for image creating.
@@ -19,9 +19,11 @@ Stack:
 * Thymeleaf is a modern server-side Java template engine for both web and standalone environments.
 * HTML/CSS
 * Liquibase - Fast database change. Fluid delivery.
-Environment:
+
+  
+### Environment:
 * Docker for containerization
-### Quick start
+## Quick start
 Steps:
 ```
 - git clone https://github.com/ZaPolarBear/diplom
