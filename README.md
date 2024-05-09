@@ -23,10 +23,12 @@ Environment:
 * Docker for containerization
 ### Quick start
 Steps:
+```
 - git clone https://github.com/ZaPolarBear/diplom
 - cd diplom
 - mvn clean package
 - docker-compose -f docker-compose.yml up -d --build
 - docker run -d -p 8082:8082 -t diplom:0.0.1
 - curl http://localhost:8082 - chech for app is up-to-date
+```
    
