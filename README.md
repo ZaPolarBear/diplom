@@ -24,7 +24,7 @@ There you can:
 ### Environment:
 * Docker for containerization
 ## Quick start
-Steps:
+### Steps:
 ```
 - git clone https://github.com/ZaPolarBear/diplom
 - cd diplom
