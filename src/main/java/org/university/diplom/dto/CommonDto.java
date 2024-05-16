@@ -18,7 +18,4 @@ public class CommonDto {
     private double frequency;
     private double frequencySecond;
     private FunctionType type;
-
-    private CommonDto commonDto;
-
 }
