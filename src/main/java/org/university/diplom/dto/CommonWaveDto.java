@@ -8,7 +8,7 @@ import org.university.diplom.constants.FunctionType;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CommonDto {
+public class CommonWaveDto {
 
     private double phaseDifference;
     private double amplitude;

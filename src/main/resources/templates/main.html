@@ -6,26 +6,15 @@
     <title>Graphic Generator</title>
 </head>
 <body th:class="body">
-    <form>
-            <div>
-                <button class="button" >
-                    <IMG class="img" th:src="@{/images/Vector.svg}">
-                    <a th:href="@{mechanical}">Mechanical</a>
-                </button>
-                <button class="button">
-                    <IMG class="img" th:src="@{/images/Vector.svg}">
-                    <a th:href="@{/interference}">Interference</a>
-                </button>
-                <button class="button">
-                    <IMG class="img" th:src="@{/images/Vector.svg}">
-                    <a th:href="@{/addition}">Addition</a>
-                </button>
-                <button class="button">
-                    <IMG class="img" th:src="@{/images/Vector.svg}">
-                    <a th:href="@{/beating}">Beating</a>
-                </button>
-
-            </div>
-    </form>
+<form>
+    <div>
+        <button class="button">
+            <a th:href="@{user/login}">Login</a>
+        </button>
+        <button class="button">
+            <a th:href="@{user/register}">Register</a>
+        </button>
+    </div>
+</form>
 </body>
 </html>

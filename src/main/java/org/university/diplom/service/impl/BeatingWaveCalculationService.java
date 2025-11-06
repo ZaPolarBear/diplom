@@ -5,23 +5,27 @@ import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 import org.springframework.stereotype.Service;
 import org.university.diplom.constants.FunctionType;
-import org.university.diplom.dto.CommonDto;
+import org.university.diplom.dto.CommonWaveDto;
 import org.university.diplom.service.CalculationService;
 
 @Service
 @RequiredArgsConstructor
 public class BeatingWaveCalculationService implements CalculationService {
+
+    public static final double GRID_SIZE = 10.0;
+    public static final double STEP_SIZE = 0.01;
+
     @Override
-    public XYSeriesCollection calculate(CommonDto commonDto) {
+    public XYSeriesCollection calculate(CommonWaveDto commonWaveDto) {
         XYSeries wave1 = new XYSeries("Wave 1");
-        for (double x = 0.0; x <= 10.0; x += 0.01) {
-            double y1 = commonDto.getAmplitude() * Math.sin(2 * Math.PI * commonDto.getFrequency() * x);
+        for (double x = 0.0; x <= GRID_SIZE; x += STEP_SIZE) {
+            double y1 = commonWaveDto.getAmplitude() * Math.sin(2 * Math.PI * commonWaveDto.getFrequency() * x);
             wave1.add(x, y1);
         }
 
         XYSeries wave2 = new XYSeries("Wave 2");
-        for (double x = 0.0; x <= 10.0; x += 0.01) {
-            double y2 = commonDto.getAmplitudeSecond() * Math.sin(2 * Math.PI * commonDto.getFrequencySecond() * x);
+        for (double x = 0.0; x <= GRID_SIZE; x += STEP_SIZE) {
+            double y2 = commonWaveDto.getAmplitudeSecond() * Math.sin(2 * Math.PI * commonWaveDto.getFrequencySecond() * x);
             wave2.add(x, y2);
         }
 
@@ -46,7 +50,7 @@ public class BeatingWaveCalculationService implements CalculationService {
     }
 
     @Override
-    public String toFunction(CommonDto commonDto) {
-        return commonDto.getAmplitude() + " * sin(2 * " + Math.PI + " * " + commonDto.getFrequency()  + ")";
+    public String toFunction(CommonWaveDto commonWaveDto) {
+        return commonWaveDto.getAmplitude() + " * sin(2 * " + Math.PI + " * " + commonWaveDto.getFrequency() + ")";
     }
 }

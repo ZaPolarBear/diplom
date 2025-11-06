@@ -5,7 +5,7 @@ import org.jfree.data.xy.XYSeriesCollection;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.university.diplom.constants.FunctionType;
-import org.university.diplom.dto.CommonDto;
+import org.university.diplom.dto.CommonWaveDto;
 import org.university.diplom.dto.ResultDto;
 import org.university.diplom.model.FunctionEntity;
 import org.university.diplom.repository.FunctionEntityRepository;
@@ -20,7 +20,7 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class Processor {
+public class WaveFunctionProcessor {
 
     @Value("${spring.minio.bucket.image}")
     private String bucketImageName;
@@ -38,10 +38,10 @@ public class Processor {
 
     private final XmlFileService xmlFileService;
 
-    public ResultDto process(CommonDto commonDto) {
-        FunctionType functionType = commonDto.getType();
+    public ResultDto process(CommonWaveDto commonWaveDto) {
+        FunctionType functionType = commonWaveDto.getType();
         CalculationService service = calculationStrategyHandler.handle(functionType);
-        String function = service.toFunction(commonDto);
+        String function = service.toFunction(commonWaveDto);
         Optional<FunctionEntity> entity = functionEntityRepository.findByFunctionAndType(function, functionType);
         if (entity.isPresent()) {
             return new ResultDto(
@@ -50,7 +50,7 @@ public class Processor {
                     entity.get().getFileName().toString()
             );
         } else {
-            XYSeriesCollection dataset = service.calculate(commonDto);
+            XYSeriesCollection dataset = service.calculate(commonWaveDto);
             byte[] imageBytes = imageService.generateImage(dataset);
             byte[] dataBytes = xmlFileService.generateXMLFile(dataset);
             String imageName = minioService.upload(imageBytes, bucketImageName);

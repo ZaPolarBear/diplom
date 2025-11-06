@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.university.diplom.constants.FunctionType;
-import org.university.diplom.dto.CommonDto;
+import org.university.diplom.dto.CommonWaveDto;
 import org.university.diplom.dto.ResultDto;
-import org.university.diplom.processor.Processor;
+import org.university.diplom.processor.WaveFunctionProcessor;
 import org.university.diplom.service.impl.MinioService;
 
 import java.util.UUID;
@@ -20,16 +20,16 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class AdditionGenerationController {
 
-    private final Processor processor;
+    private final WaveFunctionProcessor waveFunctionProcessor;
     private final MinioService minioService;
 
     @Value("${spring.minio.bucket.image}")
     private String bucketImageName;
 
     @PostMapping("/addition")
-    public String process(CommonDto commonDto, Model model) {
-        commonDto.setType(FunctionType.ADDITION);
-        ResultDto resultDto = processor.process(commonDto);
+    public String process(CommonWaveDto commonWaveDto, Model model) {
+        commonWaveDto.setType(FunctionType.ADDITION);
+        ResultDto resultDto = waveFunctionProcessor.process(commonWaveDto);
         model.addAttribute("resultDto", resultDto);
         return "addition";
     }

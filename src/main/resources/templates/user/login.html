@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <link rel="stylesheet" href="/css/graph.css">
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+<div class="wrapper">
+    <div class="function_block">
+        <div>
+            <div>
+                <a class="a" th:href="@{/main}">Back</a>
+            </div>
+        </div>
+        <form method="post"
+              role="form"
+              th:action="@{/user/login}"
+              th:object="${userLoginRequestDto}">
+            <div class="input_block_short">
+                <label>
+                    <a class="a">User login:</a>
+                </label>
+                <label>
+                    <input type="text"
+                           class="input"
+                           id="username"
+                           name="username"
+                           placeholder="Username"
+                           th:field="*{username}"
+                           required
+                           title="Please enter a valid username."
+                    />
+                </label>
+                <label>
+                    <a class="a">User password:</a>
+                </label>
+                <label>
+                    <input type="text"
+                           id="password"
+                           name="password"
+                           class="input"
+                           th:field="*{password}"
+                           required
+                           title="Please enter a valid password."
+                    />
+                </label>
+            </div>
+            <div class="button_block">
+                <button type="submit" class="box">Login</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

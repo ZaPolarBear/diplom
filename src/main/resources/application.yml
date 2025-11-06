@@ -6,13 +6,9 @@ server:
   port: '8082'
   tomcat:
     max-swallow-size: -1
-request:
-  host: http://localhost:8080
-role:
-  admin: ADMIN
-app:
-  image:
-    file-size: 50
+token:
+  signing:
+    key: ${SECRET_KEY}
 spring:
   minio:
     url: http://localhost:9000

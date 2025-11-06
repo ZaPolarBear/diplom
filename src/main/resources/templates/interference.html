@@ -10,7 +10,7 @@
     <div class="function_block">
         <div>
             <div>
-                <a class="a" th:href="@{/main}">Back</a>
+                <a class="a" th:href="@{/waves}">Back</a>
             </div>
             <div th:object="${resultDto}">
                 <a class="a" id="function" th:unless="${resultDto} == null" th:text="${resultDto.getFunction()}"></a>
@@ -19,7 +19,7 @@
         <form method="post"
               role="form"
               th:action="@{/interference}"
-              th:object="${commonDto}">
+              th:object="${commonWaveDto}">
             <div class="input_block_short">
                 <label>
                     <a class="a">Write amplitude:</a>
