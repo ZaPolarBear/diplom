@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <link rel="stylesheet" href="/css/graph.css">
+    <meta charset="UTF-8">
+    <title>Register</title>
+</head>
+<body>
+<div class="wrapper">
+    <div class="function_block">
+        <div>
+            <div>
+                <a class="a" th:href="@{/main}">Back</a>
+            </div>
+        </div>
+        <form method="post"
+              role="form"
+              th:action="@{/user/register}"
+              th:object="${userRegisterRequestDto}">
+            <div>
+                <label>
+                    <a class="a">User login:</a>
+                </label>
+                <label>
+                    <input type="text"
+                           id="username"
+                           class="input"
+                           name="username"
+                           placeholder="Username"
+                           th:field="*{username}"
+                           required
+                           title="Please enter a valid username."
+                    />
+                </label>
+                <label>
+                    <a class="a">User password:</a>
+                </label>
+                <label>
+                    <input type="text"
+                           id="password"
+                           name="password"
+                           class="input"
+                           placeholder="Password"
+                           th:field="*{password}"
+                           required
+                           title="Please enter a valid password."
+                    />
+                </label>
+                <label>
+                    <a class="a">User firstname:</a>
+                </label>
+                <label>
+                    <input type="text"
+                           id="firstname"
+                           name="firstname"
+                           placeholder="Firstname"
+                           th:field="*{firstname}"
+                           required
+                           title="Please enter a valid firstname."
+                    />
+                </label>
+                <label>
+                    <a class="a">User lastname:</a>
+                </label>
+                <label>
+                    <input type="text"
+                           id="lastname"
+                           name="lastname"
+                           placeholder="Lastname"
+                           th:field="*{lastname}"
+                           required
+                           title="Please enter a valid lastname."
+                    />
+                </label>
+                <label>
+                    <a class="a">User surname:</a>
+                </label>
+                <label>
+                    <input type="text"
+                           id="surname"
+                           name="surname"
+                           placeholder="Surname"
+                           th:field="*{surname}"
+                           required
+                           title="Please enter a valid surname."
+                    />
+                </label>
+            </div>
+            <div class="button_block">
+                <button type="submit" class="box">Register</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

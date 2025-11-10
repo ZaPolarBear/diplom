@@ -1,8 +1,9 @@
 ## Diplom Project
 This project was made for creating various type of graphics
 There you can:
-* Make gpahs
-* Сoherent waves
+
+* Make graphs
+* Coherent waves
 * Beating waves
 * Addition waves
 * Wave interference
@@ -10,7 +11,8 @@ There you can:
 * Get data tables to work with in another programs
 ## Technologies used
 ### Stack:
-* Java 17.
+
+* Java 21.
 * Spring: Spring Boot, Spring MVC, Data JPA, Spring Validation.
 * JFreeChart - fast graph generating with opportunity for image creating.
 * MinIO - image and xml file storage.

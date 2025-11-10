@@ -1,6 +1,7 @@
 package org.university.diplom.service.impl;
 
 import io.minio.MinioClient;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
@@ -13,6 +14,7 @@ import javax.xml.stream.XMLStreamWriter;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
+@Getter
 @Service
 @RequiredArgsConstructor
 public class XmlFileService {
@@ -59,4 +61,5 @@ public class XmlFileService {
             throw new RuntimeException(e);
         }
     }
+
 }

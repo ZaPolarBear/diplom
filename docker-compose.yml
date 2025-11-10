@@ -9,6 +9,7 @@ services:
         - postgres
         - minio
       restart: on-failure
+
   postgres:
     image: postgres:latest
     container_name: postgres
@@ -20,8 +21,11 @@ services:
       - POSTGRES_USER=${DB_USERNAME:-postgres}
       - POSTGRES_PASSWORD=${DB_PASSWORD:-postgres}
       - POSTGRES_DB=${DB_WAVE:-wave_db}
+    volumes:
+      - postgres-data:/var/lib/postgresql
+
   minio:
-    image: 'bitnami/minio:latest'
+    image: elestio/minio:latest
     container_name: minio
     hostname: minio
     ports:
@@ -33,6 +37,10 @@ services:
       MINIO_CONSOLE_ADDRESS: ':9001'
       MINIO_ROOT_USER: "imageStorage"
       MINIO_ROOT_PASSWORD: "imageStorage"
+    entrypoint: minio server start
+    volumes:
+      - minio-data:/data
+
   createbuckets:
     image: minio/mc
     depends_on:
@@ -46,3 +54,6 @@ services:
           /usr/bin/mc policy set public myminio/file;
           exit 0;
           "
+volumes:
+  postgres-data:
+  minio-data:

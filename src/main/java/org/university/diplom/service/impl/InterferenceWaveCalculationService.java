@@ -5,19 +5,19 @@ import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 import org.springframework.stereotype.Service;
 import org.university.diplom.constants.FunctionType;
-import org.university.diplom.dto.CommonDto;
+import org.university.diplom.dto.CommonWaveDto;
 import org.university.diplom.service.CalculationService;
 
 @Service
 @RequiredArgsConstructor
 public class InterferenceWaveCalculationService implements CalculationService {
     @Override
-    public XYSeriesCollection calculate(CommonDto commonDto) {
+    public XYSeriesCollection calculate(CommonWaveDto commonWaveDto) {
         XYSeries series = new XYSeries("Interference");
-        double k = 2 * Math.PI / commonDto.getWaveLength();
+        double k = 2 * Math.PI / commonWaveDto.getWaveLength();
         for (int i = 0; i < 1000; i++) {
             double x = i / 100.0;
-            double y = commonDto.getAmplitude() * Math.cos(k * x + commonDto.getPhaseDifference());
+            double y = commonWaveDto.getAmplitude() * Math.cos(k * x + commonWaveDto.getPhaseDifference());
             series.add(x, y);
         }
         XYSeriesCollection dataset = new XYSeriesCollection();
@@ -31,7 +31,7 @@ public class InterferenceWaveCalculationService implements CalculationService {
     }
 
     @Override
-    public String toFunction(CommonDto commonDto) {
-        return commonDto.getAmplitude() + " *  cos(" + 2 * Math.PI / commonDto.getWaveLength() + " + " + commonDto.getPhaseDifference() + ")";
+    public String toFunction(CommonWaveDto commonWaveDto) {
+        return commonWaveDto.getAmplitude() + " *  cos(" + 2 * Math.PI / commonWaveDto.getWaveLength() + " + " + commonWaveDto.getPhaseDifference() + ")";
     }
 }
