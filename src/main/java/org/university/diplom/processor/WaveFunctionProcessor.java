@@ -3,6 +3,7 @@ package org.university.diplom.processor;
 import lombok.RequiredArgsConstructor;
 import org.jfree.data.xy.XYSeriesCollection;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.university.diplom.constants.FunctionType;
 import org.university.diplom.dto.CommonWaveDto;
@@ -38,6 +39,7 @@ public class WaveFunctionProcessor {
 
     private final XmlFileService xmlFileService;
 
+    @Cacheable(value = "waves")
     public ResultDto process(CommonWaveDto commonWaveDto) {
         FunctionType functionType = commonWaveDto.getType();
         CalculationService service = calculationStrategyHandler.handle(functionType);
