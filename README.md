@@ -17,14 +17,25 @@ There you can:
 * JFreeChart - fast graph generating with opportunity for image creating.
 * MinIO - image and xml file storage.
 * Lombok - reducing boilerplate code.
-* Postgre - database.
+* Postgres - database.
 * Thymeleaf is a modern server-side Java template engine for both web and standalone environments.
 * HTML/CSS
 * Liquibase - Fast database change. Fluid delivery.
+* Redis - request caching.
 
-  
+### About cache:
+
+In this app we have 3 cache modes:
+
+* Simple(default) - all cache will be stored in-memory at an instance of ConcurrentHashMap
+* Redis - all cache will be stored in redis
+* None - all cache operations will be disabled
+
+To change that use env variable CACHE_TYPE with values simple/redis/none
 ### Environment:
-* Docker for containerization
+
+* Docker for containerization.
+* Docker compose for setting up db's.
 ## Quick start
 ### Steps:
 ```

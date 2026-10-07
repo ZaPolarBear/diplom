@@ -11,7 +11,26 @@ token:
   signing:
     key: ${SECRET_KEY}
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: caches, health
+
 spring:
+  cache:
+    type: ${CACHE_TYPE:simple}
+    time-to-live: ${CACHE_TIME_TO_LIVE:10}
+    cache-names: waves
+    redis:
+      cache-null-values: false
+  data:
+    redis:
+      repositories:
+        enabled: false
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      connect-timeout: 3000ms
   minio:
     url: http://localhost:9000
     bucket:
