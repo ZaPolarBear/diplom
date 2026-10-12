@@ -21,7 +21,7 @@ services:
       - POSTGRES_PASSWORD=${DB_PASSWORD:-postgres}
       - POSTGRES_DB=${DB_WAVE:-wave_db}
   minio:
-    image: 'bitnami/minio:latest'
+    image: 'soldevelo/minio:latest'
     container_name: minio
     hostname: minio
     ports:
